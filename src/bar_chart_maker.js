@@ -1,5 +1,6 @@
 import React from "react";
 import _ from "underscore";
+import ReactTooltip from 'react-tooltip';
 
 const BarChartScale = 3;
 
@@ -8,15 +9,16 @@ const BarChartMaker = (ChartDataJson, CallToCount) => {
     // type, keyed on that week's log file name (i.e. "YYYY-MM-DD.pdf")
     return <div className='BarChart'>
         {_.map(ChartDataJson, (FileData, FileName) => {
-            let WeekName = FileName.substring(0, FileName.indexOf("."));
+            const week = FileName.substring(0, FileName.indexOf("."));
             return <div key={FileName}>     
                 <div>           
-                    <div className='BarChartBox' style={{width:BarChartScale*FileData[CallToCount]}}>
+                    <div data-tip={week} className='BarChartBox' style={{width:BarChartScale*FileData[CallToCount]}}>
                         {FileData[CallToCount]}
                     </div>
                 </div>
             </div>
         })}
+        <ReactTooltip />
     </div>
 }
 

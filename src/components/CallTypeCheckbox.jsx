@@ -18,17 +18,10 @@ class CallTypeCheckbox extends Component {
         const ThisCallType = this.props.CallType;
         const CallTypeDisplayText = ThisCallType.toLowerCase();
 
-        let BoxStyle;
-        if (this.props.CheckedStatus) {
-            BoxStyle = {backgroundColor:'black'};
-        } else {
-            BoxStyle = {backgroundColor:'#999'};
-        }    
-
-        return <label label={ThisCallType} onClick={this.ClickBox} style={BoxStyle}>
+        return <div className={`call-container ${this.props.CheckedStatus ? 'selected' : ''}` } label={ThisCallType} onClick={this.ClickBox}>
             <input type='checkbox' value={ThisCallType} checked={this.props.CheckedStatus} onChange={(evt) => {evt.preventDefault();} }/>
             <span style={CapitalizeStyle}>{CallTypeDisplayText}</span> 
-        </label>;
+        </div>;
     }
 }
 

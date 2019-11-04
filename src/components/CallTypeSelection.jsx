@@ -45,7 +45,8 @@ class CallTypeSelection extends Component {
 
     render() {
 
-        const AllCallTypes = this.props.CallTypes;
+        let AllCallTypes = this.props.CallTypes;
+        AllCallTypes = AllCallTypes.sort((a, b) => a.localeCompare(b));
         const CallTypeCheckboxes = _.map(AllCallTypes, (ThisCallType) => {
             return <CallTypeCheckbox CallType={ThisCallType} key={ThisCallType} CheckedStatus={_.contains(this.state.CurrentlyChecked, ThisCallType) ? true : false} OnChangeFunc={this.HandleChildChange} />
         }, this)

@@ -58,13 +58,17 @@
   flex-wrap:wrap;
 }
 
-#CallTypeCheckboxes > label {
+.call-container {
   flex-grow: 1;
   background-color:#999;
   color:white;
   margin:2px;
   padding:4px;
   cursor: pointer;
+}
+
+.call-container.selected  {
+  background-color: #000
 }
 
 .timeLabel {
